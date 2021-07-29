@@ -1,0 +1,16 @@
+.headerContainer {
+  background-color: #48484a;
+  display: flex;
+  justify-content: center;
+  height: 15vh;
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    margin: 0;
+    padding: 0;
+    color: #f2f2f2;
+    align-items: center;
+  }
+}

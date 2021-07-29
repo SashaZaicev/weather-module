@@ -1,17 +1,15 @@
-import React from 'react';
-import './App.scss';
+import "./App.scss";
+import {HeaderContainer} from "./components";
+import {FooterContainer} from "./components/footer";
+import {BodyContainer} from "./components/body";
 
-function App() {
+export const App = () => {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h3>Welcome to weather module</h3>
-      </header>
-      <div>
-
-      </div>
+      <HeaderContainer/>
+      <BodyContainer/>
+      <FooterContainer/>
     </div>
   );
-}
-
-export default App;
+};
