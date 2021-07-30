@@ -1,11 +1,18 @@
 import {FC} from 'react';
 import style from './bodyContainer.module.scss'
 import {SearchSection} from "./search";
+import {ResultSection} from "./result";
 
-export const BodyContainer: FC<any> = ({}) => {
+type BodyContainerPropsType = {
+
+}
+
+export const BodyContainer: FC<BodyContainerPropsType> = ({}) => {
+
   return (
     <div className={style.bodyContainer}>
       <SearchSection />
+      <ResultSection/>
     </div>
   );
 };

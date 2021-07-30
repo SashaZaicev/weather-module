@@ -1,8 +1,10 @@
-import React from 'react';
+import {FC} from 'react';
 import {AutorSection} from "./autor";
 import style from './footerContainer.module.scss'
 
-export const FooterContainer = () => {
+type FooterContainerPropsType = {}
+
+export const FooterContainer: FC<FooterContainerPropsType> = () => {
   return (
     <div className={style.footerContainer}>
       <AutorSection/>

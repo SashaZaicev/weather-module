@@ -1,0 +1,15 @@
+.infoCityContainer {
+  margin: 10px;
+  border: cornflowerblue 2px solid;
+  padding: 15px;
+
+  .description {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+
+    span {
+      font-size: large;
+    }
+  }
+}

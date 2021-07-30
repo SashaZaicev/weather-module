@@ -1,9 +1,10 @@
 import {weatherReducer} from "./weatherReducer";
-import {combineReducers, createStore, Store} from "redux";
+import {applyMiddleware, combineReducers, createStore, Store} from "redux";
+import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-  // weatherPage: weatherReducer,
+  weatherPage: weatherReducer,
 });
 
-export const store: Store<AppRootStateType> = createStore(rootReducer);
+export const store: Store<AppRootStateType> = createStore(rootReducer, applyMiddleware(thunk));
 export type AppRootStateType = ReturnType<typeof rootReducer>;
