@@ -1,4 +1,11 @@
 .resultSection {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (max-width: 300px) {
+  .resultSection {
+    min-width: 230px;
+  }
 }

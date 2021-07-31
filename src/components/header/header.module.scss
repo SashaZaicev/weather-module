@@ -14,3 +14,13 @@
     align-items: center;
   }
 }
+
+@media screen and (max-width: 300px) {
+  .headerContainer {
+    height: 25vh;
+
+    h3 {
+      text-align: center;
+    }
+  }
+}

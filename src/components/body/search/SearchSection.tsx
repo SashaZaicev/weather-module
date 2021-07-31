@@ -1,14 +1,13 @@
 import React, {
   FC,
-  useCallback
+  useCallback,
 } from 'react';
 import style from './searchSection.module.scss'
 import {useDispatch} from "react-redux";
 import {getWeatherTC} from "../../../store/weatherReducer/weatherReducer";
+import {Button, TextField} from "@material-ui/core";
 
-type SearchSectionPropsType = {
-
-}
+type SearchSectionPropsType = {}
 
 export const SearchSection: FC<SearchSectionPropsType> = ({}) => {
   const dispatch = useDispatch()
@@ -23,8 +22,11 @@ export const SearchSection: FC<SearchSectionPropsType> = ({}) => {
   return (
     <div className={style.searchSection}>
       <form onSubmit={getWeather}>
-        <input type="text" name="city" placeholder="City"/>
-        <button>Check weather</button>
+        <TextField id="outlined-basic" label="City"
+                   variant="outlined" name="city" placeholder="City"/>
+        <Button type='submit' variant="contained" color="primary">
+          Check weather
+        </Button>
       </form>
     </div>
   );

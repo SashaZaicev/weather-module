@@ -1,6 +1,9 @@
 .autorSectionContainer {
+  display: flex;
+  align-items: center;
 
   p {
+    margin: 0;
     display: flex;
     justify-content: center;
   }
