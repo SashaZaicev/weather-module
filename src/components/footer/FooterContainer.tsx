@@ -4,7 +4,7 @@ import style from './footerContainer.module.scss'
 
 type FooterContainerPropsType = {}
 
-export const FooterContainer: FC<FooterContainerPropsType> = () => {
+export const FooterContainer: FC<FooterContainerPropsType> = ({}) => {
   return (
     <div className={style.footerContainer}>
       <AutorSection/>

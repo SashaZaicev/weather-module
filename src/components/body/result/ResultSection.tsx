@@ -1,17 +1,25 @@
 import {FC, useCallback, useEffect, useState} from 'react';
 import style from "./resultSection.module.scss";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../../store/store";
+import {useDispatch} from "react-redux";
+import {useTypedSelector} from "../../../store/store";
 import {InfoCity} from "./infoCity";
 import {actionWeatherApp} from "../../../store/weatherReducer/weatherReducer";
+import {CityType} from "../../../store/types";
+import {selectorRequestCities} from "./selectors";
 
 type ResultSectionPropsType = {}
 
 export const ResultSection: FC<ResultSectionPropsType> = () => {
   const dispatch = useDispatch()
-  const weatherCity = useSelector<AppRootStateType, Array<any>>((state) => state.weatherPage)
-  const [nameCity, setNameCity] = useState<any>(localStorage['weatherCity'] ? JSON.parse(localStorage['weatherCity']) || [] : [])
-  const removeSearchCity = useCallback(function (id: string) {
+  const weatherCity = useTypedSelector<Array<CityType>>(selectorRequestCities)
+
+  const [nameCity, setNameCity] = useState<Array<CityType>>(
+    localStorage['weatherCity']
+      ? JSON.parse(localStorage['weatherCity']) || []
+      : []
+  )
+
+  const removeSearchCity = useCallback(function (id: number) {
     const action = actionWeatherApp.removeSearchCityAC(id)
     dispatch(action)
   }, [dispatch]);
@@ -21,10 +29,13 @@ export const ResultSection: FC<ResultSectionPropsType> = () => {
     setNameCity(weatherCity)
   }, [weatherCity])
 
-  const result = nameCity && nameCity.map((city: any, index: number) =>
+  const result = nameCity && nameCity.map((city: CityType, index: number) =>
     <InfoCity
-      removeSearchCity={removeSearchCity} city={city}
-      key={index + city.name}/>);
+      removeSearchCity={removeSearchCity}
+      city={city}
+      key={index + city.name}
+    />
+  );
 
   return (
     <div className={style.resultSection}>
