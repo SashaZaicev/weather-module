@@ -7,7 +7,7 @@ type BodyContainerPropsType = {
 
 }
 
-export const BodyContainer: FC<BodyContainerPropsType> = ({}) => {
+export const BodyContainer: FC<BodyContainerPropsType> = () => {
 
   return (
     <div className={style.bodyContainer}>

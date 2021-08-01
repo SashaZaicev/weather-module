@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {weatherAPI} from "../../api/api";
 import {CityType} from "../types";
+import {appAction} from "../appReducer/appReducer";
 
 const ADD_WEATHER_CITY = 'ADD-WEATHER-CITY'
 const REMOVE_WEATHER_CITY = 'REMOVE-WEATHER-CITY'
@@ -8,8 +9,8 @@ const REMOVE_WEATHER_CITY = 'REMOVE-WEATHER-CITY'
 const initialState: Array<CityType> = localStorage['weatherCity']
   ? JSON.parse(localStorage['weatherCity']) || [] : []
 export type InitStateType = typeof initialState;
-export type AddTableType = ReturnType<typeof actionWeatherApp.addWeatherCityAC>;
-export type RemoveTableType = ReturnType<typeof actionWeatherApp.removeSearchCityAC>;
+export type AddTableType = ReturnType<typeof cityWeatherAction.addWeatherCityAC>;
+export type RemoveTableType = ReturnType<typeof cityWeatherAction.removeSearchCityAC>;
 export type ActionsType = AddTableType & RemoveTableType;
 
 export const weatherReducer = (
@@ -21,13 +22,13 @@ export const weatherReducer = (
       } else return [{...action.cityInfo}, ...state]
     }
     case REMOVE_WEATHER_CITY: {
-      return state.filter(tl => tl.id != action.id)
+      return state.filter(tl => tl.id !== action.id)
     }
     default:
       return [...state]
   }
 };
-export const actionWeatherApp = {
+export const cityWeatherAction = {
   addWeatherCityAC: (cityInfo: CityType) => ({
     type: ADD_WEATHER_CITY, cityInfo
   }),
@@ -39,6 +40,13 @@ export const getWeatherTC = (currentCity: string) => (
   dispatch: Dispatch) => {
   weatherAPI.getWeather(currentCity)
     .then((city) => {
-      dispatch(actionWeatherApp.addWeatherCityAC(city))
+      dispatch(cityWeatherAction.addWeatherCityAC(city))
+      dispatch(appAction.setAppStatus('success'));
+      dispatch(appAction.setAppError(''))
     })
+    .catch((error) => {
+        dispatch(appAction.setAppError(error.message))
+        dispatch(appAction.setAppStatus('unsuccessful'));
+      }
+    )
 };

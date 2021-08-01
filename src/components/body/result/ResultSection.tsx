@@ -3,7 +3,7 @@ import style from "./resultSection.module.scss";
 import {useDispatch} from "react-redux";
 import {useTypedSelector} from "../../../store/store";
 import {InfoCity} from "./infoCity";
-import {actionWeatherApp} from "../../../store/weatherReducer/weatherReducer";
+import {cityWeatherAction} from "../../../store/weatherReducer/weatherReducer";
 import {CityType} from "../../../store/types";
 import {selectorRequestCities} from "./selectors";
 
@@ -20,7 +20,7 @@ export const ResultSection: FC<ResultSectionPropsType> = () => {
   )
 
   const removeSearchCity = useCallback(function (id: number) {
-    const action = actionWeatherApp.removeSearchCityAC(id)
+    const action = cityWeatherAction.removeSearchCityAC(id)
     dispatch(action)
   }, [dispatch]);
 

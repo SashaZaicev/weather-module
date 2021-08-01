@@ -1,11 +1,11 @@
 import {FC} from 'react';
 import style from './autorSectionContainer.module.scss'
 
-type AutorSectionPropsType = {}
+type AuthorSectionPropsType = {}
 
-export const AutorSection: FC<AutorSectionPropsType> = ({}) => {
+export const AuthorSection: FC<AuthorSectionPropsType> = () => {
   return (
-    <div className={style.autorSectionContainer}>
+    <div className={style.authorSectionContainer}>
       <p>© 2021 Aleksandr Zaytsev</p>
     </div>
   );

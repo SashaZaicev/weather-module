@@ -1,2 +1,2 @@
-export {AutorSection} from './autor';
+export {AuthorSection} from './autor';
 export {FooterContainer} from './FooterContainer';

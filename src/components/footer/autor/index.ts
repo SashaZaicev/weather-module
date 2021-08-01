@@ -1,1 +1,1 @@
-export {AutorSection} from './AutorSection';
+export {AuthorSection} from './AuthorSection';

@@ -5,8 +5,11 @@ import React, {
 import style from './searchSection.module.scss'
 import {useDispatch} from "react-redux";
 import {getWeatherTC} from "../../../store/weatherReducer/weatherReducer";
-import {Button, TextField} from "@material-ui/core";
+import {Button, CircularProgress, TextField} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
+import {useTypedSelector} from "../../../store/store";
+import {selectorAppError, selectorRequestStatus} from "./selectors";
+import {appAction} from "../../../store/appReducer/appReducer";
 
 type SearchSectionPropsType = {}
 const useStyles = makeStyles({
@@ -21,17 +24,20 @@ const useStyles = makeStyles({
     },
   }
 })
-export const SearchSection: FC<SearchSectionPropsType> = ({}) => {
+export const SearchSection: FC<SearchSectionPropsType> = () => {
   const classes = useStyles();
   const dispatch = useDispatch()
+  const status = useTypedSelector(selectorRequestStatus)
+  const error = useTypedSelector(selectorAppError)
 
   const getWeather = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
+      dispatch(appAction.setAppStatus('loading'))
       event.preventDefault();
       const city = event.currentTarget.city.value
       dispatch(getWeatherTC(city))
       event.currentTarget.city.value = ''
-    }, [])
+    }, [dispatch])
 
   return (
     <div className={style.searchSection}>
@@ -51,6 +57,11 @@ export const SearchSection: FC<SearchSectionPropsType> = ({}) => {
           Check weather
         </Button>
       </form>
+      {status === 'loading' ?
+        <div className={style.preloader}>
+          <CircularProgress color="secondary"/>
+        </div>
+        : <div className={style.error}>{error}</div>}
     </div>
   );
 };

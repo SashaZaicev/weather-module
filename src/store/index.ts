@@ -1,2 +1,3 @@
-import {weatherReducer} from './weatherReducer';
-import {store} from './store'
+export {weatherReducer} from './weatherReducer';
+export {store} from './store'
+export {appReducer} from './appReducer';

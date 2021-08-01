@@ -21,6 +21,7 @@ export const InfoCity: FC<InfoCityPropsType> = React.memo(({
                                                              city,
                                                              removeSearchCity
                                                            }) => {
+
   const classes = useStyles();
   const nameCity = city.name;
   const sysCountry = city.sys.country;
