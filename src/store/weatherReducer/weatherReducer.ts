@@ -4,7 +4,7 @@ import {weatherAPI} from "../../api/api";
 const ADD_WEATHER_CITY = 'ADD-WEATHER-CITY'
 const REMOVE_WEATHER_CITY = 'REMOVE-WEATHER-CITY'
 
-const initialState: Array<any> = [] || JSON.parse(localStorage['weatherCity'])
+const initialState: Array<any> = localStorage['weatherCity'] ? JSON.parse(localStorage['weatherCity']) || [] : []
 export type InitStateType = typeof initialState;
 export type AddTableType = ReturnType<typeof actionWeatherApp.addWeatherCityAC>;
 export type RemoveTableType = ReturnType<typeof actionWeatherApp.removeSearchCityAC>;

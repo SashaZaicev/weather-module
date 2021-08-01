@@ -10,7 +10,7 @@ type ResultSectionPropsType = {}
 export const ResultSection: FC<ResultSectionPropsType> = () => {
   const dispatch = useDispatch()
   const weatherCity = useSelector<AppRootStateType, Array<any>>((state) => state.weatherPage)
-  const [nameCity, setNameCity] = useState<any>(JSON.parse(localStorage['weatherCity']) || [])
+  const [nameCity, setNameCity] = useState<any>(localStorage['weatherCity'] ? JSON.parse(localStorage['weatherCity']) || [] : [])
   const removeSearchCity = useCallback(function (id: string) {
     const action = actionWeatherApp.removeSearchCityAC(id)
     dispatch(action)
