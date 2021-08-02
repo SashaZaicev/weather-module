@@ -12,8 +12,9 @@
 
   .error {
     color: red;
-    margin-top: 5px;
+    margin-top: 10px;
     text-align: center;
+    height: 44px;
   }
 
   input {
@@ -24,6 +25,21 @@
   form {
     display: flex;
     justify-content: center;
+  }
+
+  .moduleWeather {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: -66px;
+
+    div {
+      height: 30px;
+    }
+
+    img {
+      width: 30px;
+    }
   }
 }
 

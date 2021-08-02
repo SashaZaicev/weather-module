@@ -33,7 +33,7 @@ export const InfoCity: FC<InfoCityPropsType> = React.memo(({
   const removeCity = useCallback(() => {
     removeSearchCity(city.id)
   }, []);
-  const weatherDescription = city.weather.map
+ const weatherDescription = city.weather.map
   ((weatherEl: OneCity, index: number) => {
     const icon = "http://openweathermap.org/img/w/" + weatherEl.icon + ".png"
     return <div key={index} className={style.description}>
