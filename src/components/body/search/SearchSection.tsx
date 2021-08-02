@@ -50,7 +50,6 @@ export const SearchSection: FC<SearchSectionPropsType> = () => {
     }, [dispatch])
 
   useEffect(() => {
-    console.log(standCity)
     if (error || standCity) {
       setIsFetching(false)
       if (name !== sendName) {
